@@ -28,5 +28,5 @@ A simple and responsive web application that allows users to convert between mul
 
 * Historical exchange rate charts
 * Dark mode toggle
----
+
 
