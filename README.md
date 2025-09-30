@@ -1,13 +1,32 @@
-# Forexa-Currency-Converter
-A simple and responsive currency converter web application that allows users to convert between multiple currencies using real-time exchange rates. https://notchxrles.github.io/Forexa-Currency-Converter/
+# Forexa Currency Converter
 
-# Features
-Supports multiple currency options
-Easy-to-use interface for quick conversions
-Responsive UI built with Tailwind CSS
+A simple and responsive web application that allows users to convert between multiple currencies using real-time exchange rates.
 
-# Technologies Used
-HTML5
-Tailwind CSS
-JavaScript (ES6)
-Exchange API
+ **Live Site:** [Forexa Currency Converter](https://notchxrles.github.io/Forexa-Currency-Converter/)
+
+---
+
+## Features
+
+* Supports multiple currency options
+* Real-time exchange rates (via [Exchange API](https://exchange-api.com))
+* Responsive UI built with **Tailwind CSS**
+* Easy-to-use interface for quick conversions
+
+---
+
+## Technologies Used
+
+* **HTML5** – Structure
+* **Tailwind CSS** – Styling & responsive design
+* **JavaScript (ES6)** – Core functionality
+* **Exchange API** – Currency data
+
+---
+
+## Future Enhancements
+
+* Historical exchange rate charts
+* Dark mode toggle
+---
+
