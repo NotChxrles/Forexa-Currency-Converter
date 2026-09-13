@@ -3,58 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forexa Currency Converter</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Forexa — Currency Converter</title>
+  <meta name="description" content="Fast, elegant currency conversion with live exchange rates." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+    :root{--bg:#f4f7fb;--surface:rgba(255,255,255,.82);--surface-solid:#fff;--surface-2:#f2f5f9;--text:#102033;--muted:#68788c;--line:#dde5ee;--primary:#2155e8;--primary-2:#6b46e8;--success:#138a65;--shadow:0 24px 70px rgba(33,57,91,.13);--glow:rgba(33,85,232,.18)}
+    [data-theme="dark"]{--bg:#09111f;--surface:rgba(16,27,46,.84);--surface-solid:#101b2e;--surface-2:#17243a;--text:#f3f7ff;--muted:#91a1b6;--line:#273750;--primary:#6c8cff;--primary-2:#a177ff;--success:#47d7aa;--shadow:0 30px 80px rgba(0,0,0,.4);--glow:rgba(108,140,255,.18)}
+    *{box-sizing:border-box}html{font-size:16px}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;transition:background .25s,color .25s;overflow-x:hidden}button,input,select{font:inherit}.ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}.orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.8}.orb.one{width:480px;height:480px;background:radial-gradient(circle,rgba(94,117,255,.18),transparent 68%);top:-180px;right:-100px}.orb.two{width:400px;height:400px;background:radial-gradient(circle,rgba(68,220,176,.14),transparent 68%);bottom:-160px;left:-100px}.shell{width:min(1120px,calc(100% - 40px));margin:auto}.topbar{height:88px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:21px;letter-spacing:-.5px}.brand-mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:grid;place-items:center;color:white;box-shadow:0 10px 24px var(--glow)}.top-actions{display:flex;gap:10px;align-items:center}.status{display:flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13px;font-weight:600;background:var(--surface)}.status-dot{width:7px;height:7px;border-radius:50%;background:#22b887;box-shadow:0 0 0 4px rgba(34,184,135,.12)}.icon-btn{border:1px solid var(--line);background:var(--surface);color:var(--text);width:42px;height:42px;border-radius:13px;display:grid;place-items:center;cursor:pointer;transition:.2s}.icon-btn:hover{transform:translateY(-2px);border-color:var(--primary);box-shadow:0 8px 20px var(--glow)}.hero{text-align:center;padding:64px 0 38px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-family:Manrope,sans-serif;font-size:clamp(38px,6vw,64px);line-height:1.05;letter-spacing:-3px;margin:20px auto 14px;max-width:780px}.hero h1 span{background:linear-gradient(100deg,var(--primary),var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;line-height:1.65;max-width:580px;margin:auto}.converter{max-width:840px;margin:0 auto 34px;background:var(--surface);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:28px;padding:10px;box-shadow:var(--shadow)}.converter-inner{background:var(--surface-solid);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:21px;padding:28px}.amount-wrap{margin-bottom:23px}.field-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:13px;font-weight:700;color:var(--muted)}.field-label small{font-weight:500}.amount-box{display:flex;align-items:center;background:var(--surface-2);border:1px solid transparent;border-radius:15px;padding:0 17px;transition:.2s}.amount-box:focus-within{border-color:var(--primary);box-shadow:0 0 0 4px var(--glow)}.amount-box span{color:var(--muted);font-weight:700}.amount-box input{width:100%;border:0;outline:0;background:transparent;color:var(--text);padding:15px 12px;font-size:23px;font-weight:700;min-width:0}.currency-row{display:grid;grid-template-columns:1fr 54px 1fr;gap:14px;align-items:end}.select-box{position:relative}.select-box select{width:100%;appearance:none;border:1px solid var(--line);background:var(--surface-solid);color:var(--text);border-radius:15px;padding:15px 42px 15px 16px;font-weight:600;outline:0;cursor:pointer;transition:.2s}.select-box select:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--glow)}.select-arrow{position:absolute;right:15px;bottom:17px;pointer-events:none;color:var(--muted)}.swap{width:50px;height:50px;border-radius:15px;border:1px solid var(--line);background:var(--surface-2);color:var(--primary);display:grid;place-items:center;cursor:pointer;transition:.25s}.swap:hover{background:var(--primary);color:white;transform:rotate(180deg)}.convert-btn{width:100%;margin-top:24px;border:0;border-radius:15px;padding:16px 24px;background:linear-gradient(100deg,var(--primary),var(--primary-2));color:#fff;font-weight:700;cursor:pointer;box-shadow:0 12px 28px var(--glow);transition:.2s;display:flex;align-items:center;justify-content:center;gap:9px}.convert-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.convert-btn:disabled{opacity:.7;cursor:wait;transform:none}.result-card{margin-top:24px;padding:24px;border-radius:17px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 9%,var(--surface-2)),color-mix(in srgb,var(--primary-2) 7%,var(--surface-2)));border:1px solid color-mix(in srgb,var(--primary) 16%,var(--line));text-align:center}.result-label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:8px}.result-main{font-family:Manrope,sans-serif;font-size:clamp(25px,5vw,38px);font-weight:800;letter-spacing:-1.2px;min-height:48px;display:flex;justify-content:center;align-items:center}.rate{color:var(--muted);font-size:14px;margin-top:8px;min-height:21px}.meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:15px}.quick{max-width:840px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}.quick-label{font-size:13px;color:var(--muted);margin-right:3px}.chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:8px 12px;cursor:pointer;font-size:12px;font-weight:700;transition:.2s}.chip:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}footer{text-align:center;color:var(--muted);font-size:12px;padding:54px 20px 28px}.loader{width:20px;height:20px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}.hero,.converter,.quick{animation:rise .55s ease both}.converter{animation-delay:.08s}.quick{animation-delay:.14s}@media(max-width:640px){.shell{width:min(100% - 24px,1120px)}.topbar{height:72px}.status{display:none}.hero{padding:45px 0 28px}.hero h1{letter-spacing:-2px}.hero p{font-size:15px}.converter{border-radius:23px}.converter-inner{padding:20px 16px}.currency-row{grid-template-columns:1fr;gap:12px}.swap{position:absolute;right:38px;margin-top:74px;z-index:2;width:40px;height:40px;border-radius:12px;transform:rotate(90deg);box-shadow:0 5px 15px rgba(0,0,0,.1)}.swap:hover{transform:rotate(270deg)}.result-card{padding:20px 12px}.amount-box input{font-size:20px}}
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
-
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-6 text-center">
-    <h1 class="text-3xl font-bold">Forexa Currency Converter</h1>
+<body>
+  <div class="ambient"><div class="orb one"></div><div class="orb two"></div></div>
+  <header class="shell topbar">
+    <div class="brand"><div class="brand-mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 7h12m0 0-3-3m3 3-3 3M19 17H7m0 0 3 3m-3-3 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Forexa</div>
+    <div class="top-actions"><div class="status"><span class="status-dot"></span>Live rates</div><button class="icon-btn" id="themeBtn" aria-label="Switch theme" title="Switch theme"><svg id="themeIcon" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg></button></div>
   </header>
-
-  <nav class="bg-blue-600 text-white p-4">
-    <ul class="flex justify-center space-x-4">
-      <li><a href="index.html" class="hover:underline">Dashboard</a></li>
-    </ul>
-  </nav>
-
-  <!-- Converter Dashboard -->
-  <main class="max-w-3xl mx-auto mt-6 p-6 bg-white rounded shadow">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- From -->
-      <div>
-        <label class="block font-bold mb-2" for="fromCurrency">From:</label>
-        <select id="fromCurrency" class="w-full p-2 border rounded"></select>
+  <main class="shell">
+    <section class="hero"><div class="eyebrow"><span class="status-dot"></span>Global exchange rates</div><h1>Money moves.<br><span>Stay ahead.</span></h1><p>Convert between world currencies with a fast, focused experience and up-to-date market rates.</p></section>
+    <section class="converter" aria-label="Currency converter"><div class="converter-inner">
+      <div class="amount-wrap"><label class="field-label" for="amount"><span>Amount</span><small>Enter any value</small></label><div class="amount-box"><span id="amountCode">USD</span><input type="number" id="amount" placeholder="0.00" value="1" min="0" step="any" inputmode="decimal" /></div></div>
+      <div class="currency-row">
+        <div><label class="field-label" for="fromCurrency">You send</label><div class="select-box"><select id="fromCurrency" aria-label="Source currency"></select><span class="select-arrow">⌄</span></div></div>
+        <button id="swapBtn" class="swap" aria-label="Swap currencies" title="Swap currencies"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M7 7h11m0 0-3-3m3 3-3 3M17 17H6m0 0 3 3m-3-3 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div><label class="field-label" for="toCurrency">They receive</label><div class="select-box"><select id="toCurrency" aria-label="Target currency"></select><span class="select-arrow">⌄</span></div></div>
       </div>
-      <!-- To -->
-      <div>
-        <label class="block font-bold mb-2" for="toCurrency">To:</label>
-        <select id="toCurrency" class="w-full p-2 border rounded"></select>
-      </div>
-    </div>
-
-    <!-- Amount -->
-    <div class="mt-6">
-      <label class="block font-bold mb-2" for="amount">Amount:</label>
-      <input type="number" id="amount" class="w-full p-2 border rounded" placeholder="Enter amount" value="1" />
-    </div>
-
-    <!-- Convert Button -->
-    <div class="mt-4 text-center">
-      <button id="convertBtn" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Convert</button>
-    </div>
-
-    <!-- Result -->
-    <div class="mt-6 text-center text-xl font-bold" id="result">
-      Converted amount will appear here
-    </div>
+      <button id="convertBtn" class="convert-btn"><span>Convert currency</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="result-card" aria-live="polite"><div class="result-label">Converted amount</div><div class="result-main" id="result">Ready to convert</div><div class="rate" id="rateText">Choose your currencies and enter an amount</div><div class="meta"><span>● Mid-market rate</span><span id="updatedText">Secure API connection</span></div></div>
+    </div></section>
+    <div class="quick"><span class="quick-label">Popular:</span><button class="chip" data-pair="USD,EUR">USD → EUR</button><button class="chip" data-pair="GBP,USD">GBP → USD</button><button class="chip" data-pair="USD,ZAR">USD → ZAR</button><button class="chip" data-pair="EUR,ZMW">EUR → ZMW</button></div>
   </main>
-
-  <footer class="bg-gray-800 text-white text-center p-4 mt-6">
-    © 2025 Forexa Dashboard  
-    <p>Mwansa Chiyumbe</p>
-  </footer>
+  <footer>© <span id="year"></span> Forexa · Designed by Mwansa Chiyumbe</footer>
 
   <script>
 
@@ -229,7 +207,12 @@
     const toSelect = document.getElementById('toCurrency');
     const amountEl = document.getElementById('amount');
     const resultEl = document.getElementById('result');
+    const rateText = document.getElementById('rateText');
+    const updatedText = document.getElementById('updatedText');
+    const amountCode = document.getElementById('amountCode');
     const convertBtn = document.getElementById('convertBtn');
+    const swapBtn = document.getElementById('swapBtn');
+    const themeBtn = document.getElementById('themeBtn');
 
     // Populate dropdowns
     function populateSelects() {
@@ -245,9 +228,23 @@
         toSelect.appendChild(opt2);
       });
 
-      // Optionally, set defaults
       fromSelect.value = 'USD';
       toSelect.value = 'EUR';
+      amountCode.textContent = fromSelect.value;
+    }
+
+    function formatMoney(value, currency) {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency', currency,
+        maximumFractionDigits: Math.abs(value) >= 1000 ? 2 : 4
+      }).format(value);
+    }
+
+    function setLoading(isLoading) {
+      convertBtn.disabled = isLoading;
+      convertBtn.innerHTML = isLoading
+        ? '<span class="loader"></span><span>Getting live rate…</span>'
+        : '<span>Convert currency</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     }
 
     async function convertCurrency() {
@@ -256,25 +253,34 @@
       const amount = parseFloat(amountEl.value);
 
       if (isNaN(amount) || amount <= 0) {
-        resultEl.textContent = "⚠️ Please enter a valid amount!";
+        resultEl.textContent = "Enter a valid amount";
+        rateText.textContent = "The amount must be greater than zero.";
+        amountEl.focus();
         return;
       }
 
       const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${from}`;
+      setLoading(true);
       try {
         const response = await fetch(url);
         const data = await response.json();
 
         if (data.result === "success") {
           const rate = data.conversion_rates[to];
-          const converted = (amount * rate).toFixed(4);
-          resultEl.textContent = `${amount} ${from} = ${converted} ${to}`;
+          const converted = amount * rate;
+          resultEl.textContent = formatMoney(converted, to);
+          rateText.textContent = `1 ${from} = ${Number(rate).toLocaleString(undefined, { maximumFractionDigits: 6 })} ${to}`;
+          updatedText.textContent = `Updated ${new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}`;
         } else {
-          resultEl.textContent = `❌ API Error: ${data["error-type"] || "Unknown error"}`;
+          resultEl.textContent = "Rate unavailable";
+          rateText.textContent = `API error: ${data["error-type"] || "Please try again"}`;
         }
       } catch (err) {
-        resultEl.textContent = "🌐 Network error. Please try again later.";
+        resultEl.textContent = "Connection interrupted";
+        rateText.textContent = "Check your internet connection and try again.";
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -287,11 +293,34 @@
     });
 
     // If user changes dropdowns, auto convert
-    fromSelect.addEventListener('change', convertCurrency);
+    fromSelect.addEventListener('change', () => {
+      amountCode.textContent = fromSelect.value;
+      convertCurrency();
+    });
     toSelect.addEventListener('change', convertCurrency);
+    swapBtn.addEventListener('click', () => {
+      [fromSelect.value, toSelect.value] = [toSelect.value, fromSelect.value];
+      amountCode.textContent = fromSelect.value;
+      convertCurrency();
+    });
+    document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+      [fromSelect.value, toSelect.value] = chip.dataset.pair.split(',');
+      amountCode.textContent = fromSelect.value;
+      convertCurrency();
+    }));
+    themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('forexa-theme', next);
+      themeBtn.setAttribute('aria-label', `Switch to ${next === 'dark' ? 'light' : 'dark'} theme`);
+    });
 
     // On load
     window.addEventListener('load', () => {
+      const savedTheme = localStorage.getItem('forexa-theme');
+      if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.dataset.theme = 'dark';
+      document.getElementById('year').textContent = new Date().getFullYear();
       populateSelects();
       convertCurrency();
     });
