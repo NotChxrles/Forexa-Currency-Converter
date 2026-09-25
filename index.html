@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert world currencies with Forexa. Explore daily exchange rates, save your favourite currency pairs and estimate transfer fees in one clear, simple workspace.">
+  <meta name="theme-color" content="#101118">
+  <meta property="og:title" content="Forexa — A clearer way to convert">
+  <meta property="og:description" content="Daily exchange rates. Your favourite pairs. One clear answer.">
+  <meta property="og:type" content="website">
+  <title>Forexa — Currency Converter & Daily Exchange Rates</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23a99aff'/%3E%3Cpath d='M16 24h32m-8-8 8 8-8 8M48 40H16m8-8-8 8 8 8' fill='none' stroke='%23101118' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem('forexa.theme') === 'light' ? 'light' : 'dark'; } catch (_) {}
+  </script>
+  <style>
+    :root{color-scheme:dark;--bg:#101118;--surface:#191a24;--surface-2:#20222f;--input:#13141d;--text:#f5f4fa;--muted:#aaaabd;--line:#30313f;--accent:#b2a2ff;--accent-strong:#c7baff;--accent-ink:#21153e;--tint:#252236;--green:#92dbbc;--error:#ffb4b4;--shadow:0 24px 70px #00000024;--radius:22px}
+    :root[data-theme="light"]{color-scheme:light;--bg:#f6f5f9;--surface:#ffffff;--surface-2:#f0eef5;--input:#faf9fc;--text:#20202b;--muted:#666477;--line:#e0dce9;--accent:#7350cb;--accent-strong:#6642bc;--accent-ink:#fff;--tint:#eee8fb;--green:#237b5a;--error:#b22f3e;--shadow:0 20px 60px #3422550a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button,a,input,select,summary{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}a{color:inherit;text-decoration:none}button{color:inherit}button,select,input{min-height:44px}button{border:0}svg.icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.icon-sprite{position:absolute;width:0;height:0;overflow:hidden}.wrap{width:min(1120px,calc(100% - 64px));margin-inline:auto}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.2;letter-spacing:-.035em}h2{font-size:27px;font-weight:650}h3{font-size:18px;font-weight:600}.muted{color:var(--muted)}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.skip{position:fixed;top:8px;left:8px;z-index:100;background:var(--accent);color:var(--accent-ink);padding:12px 20px;transform:translateY(-160%);border-radius:8px}.skip:focus{transform:translateY(0)}
+    .site-header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}.header-inner{height:84px;display:flex;align-items:center;gap:44px}.brand{display:inline-flex;gap:11px;align-items:center;font-size:24px;font-weight:700;letter-spacing:-1px}.brand-mark{width:37px;height:37px;border-radius:11px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}.brand-mark .icon{width:23px;height:23px;stroke-width:2}.nav{display:flex;gap:28px;align-items:center;margin-left:30px}.nav a{font-size:13px;color:var(--muted);padding:10px 0;position:relative}.nav a:hover,.nav a[aria-current]{color:var(--text)}.nav a[aria-current]:after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);border-radius:2px}.header-actions{display:flex;align-items:center;gap:20px;margin-left:auto}.rate-status{font-size:12px;display:flex;align-items:center;gap:8px;color:var(--muted)}.status-dot{height:6px;width:6px;background:var(--muted);border-radius:50%;flex-shrink:0}.rate-status[data-state="ready"]{color:var(--green)}.rate-status[data-state="ready"] .status-dot{background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 8%,transparent)}.rate-status[data-state="stale"]{color:var(--error)}.rate-status[data-state="stale"] .status-dot{background:var(--error)}.icon-button{display:inline-grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:12px;background:transparent}.icon-button:hover{background:var(--surface-2)}.menu-toggle{display:none}.sun{display:block}.moon{display:none}[data-theme="light"] .sun{display:none}[data-theme="light"] .moon{display:block}
+    .hero{padding:56px 0 34px;display:flex;align-items:center;justify-content:space-between;gap:30px}.hero .eyebrow{display:flex;gap:10px;align-items:center;color:var(--accent);margin-bottom:17px}.hero .eyebrow:before{content:"";width:24px;height:1px;background:var(--accent)}h1{font-size:clamp(38px,4.2vw,56px);font-weight:650;letter-spacing:-.05em}.hero h1 span{color:var(--accent)}.hero p{margin-top:17px;max-width:520px;color:var(--muted);font-size:15px}.hero-note{display:flex;align-items:center;gap:18px;align-self:flex-end;margin-bottom:6px;border-left:1px solid var(--line);padding-left:28px}.orbit{width:58px;height:58px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);position:relative}.orbit:before{content:"";position:absolute;width:38px;height:68px;border:1px solid var(--line);border-radius:50%;transform:rotate(50deg)}.orbit .icon{width:26px;height:26px}.hero-note strong{font-size:24px;font-weight:600;letter-spacing:-.05em;display:block}.hero-note span{display:block;color:var(--muted);font-size:12px}
+    .workspace{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(280px,1fr);gap:22px;align-items:start}.converter{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:26px 30px 0}.card-title{display:flex;align-items:center;gap:10px;font-size:16px;letter-spacing:-.02em;font-weight:600}.card-title .icon{color:var(--accent)}.text-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:4px 0;background:transparent;color:var(--muted);font-size:12px}.text-button:hover{color:var(--accent)}.text-button[aria-pressed="true"]{color:var(--accent)}.text-button .icon{width:16px;height:16px}.form-content{padding:21px 30px 25px}.field-label{font-size:12px;font-weight:500;color:var(--muted);display:block;margin-bottom:8px}.amount-box{border:1px solid var(--line);background:var(--input);border-radius:12px;padding:15px 17px;display:flex;align-items:center;gap:12px}.amount-box:focus-within,.currency-field:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 12%,transparent)}.amount-box input{background:transparent;color:var(--text);border:0;outline:0;min-width:0;width:100%;font-size:34px;letter-spacing:-.03em;line-height:1.2;font-weight:550;font-variant-numeric:tabular-nums;-moz-appearance:textfield;appearance:textfield}.amount-box input::-webkit-inner-spin-button{appearance:none}.amount-code{font-size:14px;color:var(--muted);font-weight:600;letter-spacing:.04em}.currency-fields{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:12px;margin-top:19px;align-items:end}.currency-field{position:relative;background:var(--input);border:1px solid var(--line);border-radius:11px;display:flex;align-items:center;padding-left:12px;overflow:hidden}.currency-field select{appearance:none;-webkit-appearance:none;min-width:0;width:100%;height:62px;padding:10px 28px 10px 10px;color:var(--text);background:transparent;border:0;outline:0;font-size:13px;font-weight:550;text-overflow:ellipsis;cursor:pointer}.currency-field select option{background:var(--surface);color:var(--text)}.currency-field>.icon{position:absolute;right:9px;pointer-events:none;width:13px;height:13px;color:var(--muted)}.currency-symbol{display:grid;place-items:center;flex-shrink:0;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:var(--surface-2);font-size:14px;font-weight:600;color:var(--accent)}.swap{height:40px;min-height:40px;width:36px;display:grid;place-items:center;background:transparent;margin-bottom:11px;border-radius:10px;color:var(--muted)}.swap:hover{background:var(--tint);color:var(--accent)}.primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:22px;height:52px;background:var(--accent);color:var(--accent-ink);font-size:14px;font-weight:650;border-radius:10px;transition:background .15s,transform .15s}.primary:hover:not(:disabled){background:var(--accent-strong);transform:translateY(-1px)}.primary .icon{width:17px;height:17px}.fee-settings{margin-top:13px}.fee-settings summary{list-style:none;display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;cursor:pointer;min-height:36px}.fee-settings summary::-webkit-details-marker{display:none}.fee-settings summary .icon{width:13px;height:13px;transition:transform .2s}.fee-settings[open] summary .icon{transform:rotate(45deg)}.fee-settings summary:hover{color:var(--text)}.fee-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:8px}.small-input{background:var(--input);border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:8px;width:100%;min-width:0}.fee-help{font-size:11px;color:var(--muted);margin-top:9px}.form-error{font-size:12px;color:var(--error);padding:12px 0 0}.result-panel{margin-top:13px;padding:23px 22px 19px;background:var(--tint);border:1px solid color-mix(in srgb,var(--accent) 18%,transparent);border-radius:13px}.result-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.result-label{font-size:10px;font-weight:650;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}.copy-button{width:30px;height:30px;min-height:30px;display:grid;place-items:center;color:var(--muted);border-radius:6px;background:transparent}.copy-button:hover{background:var(--surface-2);color:var(--text)}.copy-button .icon{width:16px;height:16px}.result-amount{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;line-height:1.2;margin:6px 0 15px;font-variant-numeric:tabular-nums}.result-amount output{font-size:clamp(30px,3.4vw,43px);font-weight:600;letter-spacing:-.045em;overflow-wrap:anywhere;min-width:0}.result-amount>span{color:var(--accent);font-size:18px;font-weight:500}.rate-equation{font-size:12px;color:var(--text);font-variant-numeric:tabular-nums}.result-foot{font-size:11px;color:var(--muted);margin-top:5px}.data-footer{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:15px 30px;background:var(--input);border-top:1px solid var(--line);font-size:10px;color:var(--muted)}.data-footer p{max-width:80%}.data-footer a{text-decoration:underline;text-underline-offset:3px}.refresh .icon{width:14px;height:14px}.refresh{min-height:32px;font-size:10px;white-space:nowrap}.spin{animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .sidebar{display:flex;flex-direction:column;gap:20px}.shortcuts{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}.section-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.count{font-size:10px;border:1px solid var(--line);border-radius:6px;padding:3px 7px;color:var(--muted)}.shortcuts h2{font-size:16px;letter-spacing:-.02em}.section-description{font-size:12px;color:var(--muted);margin-top:7px}.shortcut-list{margin-top:15px;display:grid}.shortcut{display:grid;grid-template-columns:32px 1fr auto;align-items:center;text-align:left;gap:10px;background:transparent;border-bottom:1px solid var(--line);padding:15px 0;width:100%}.shortcut:last-child{border-bottom:0;padding-bottom:5px}.shortcut:hover .pair-name,.shortcut[aria-pressed="true"] .pair-name{color:var(--accent)}.shortcut>.currency-symbol{width:30px;height:30px;font-size:12px}.pair-name{font-size:13px;font-weight:550;display:block}.pair-name b{font-weight:400;color:var(--muted);padding:0 4px}.pair-rate{font-size:10px;color:var(--muted);display:block;font-variant-numeric:tabular-nums;margin-top:2px}.shortcut>.icon{width:16px;height:16px;color:var(--muted)}.empty-shortcuts{padding:20px 0 0;color:var(--muted);font-size:12px}.local-note{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:18px}.local-note .icon{width:12px;height:12px}.insight{padding:25px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(125deg,var(--tint),var(--surface));position:relative;overflow:hidden}.insight .eyebrow{color:var(--accent);font-size:9px}.insight h3{font-size:22px;max-width:230px;margin:15px 0 10px;letter-spacing:-.03em;font-weight:550}.insight p{color:var(--muted);font-size:12px;line-height:1.8}.inline-link{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:550;color:var(--accent);margin-top:18px;min-height:32px}.inline-link .icon{width:14px;height:14px}.inline-link:hover{text-decoration:underline;text-underline-offset:4px}
+    .benefits{display:flex;justify-content:center;gap:40px;margin:23px 0 0;color:var(--muted);font-size:11px}.benefits span{display:flex;align-items:center;gap:7px}.benefits .icon{height:14px;width:14px;color:var(--accent)}.rates-section{padding-top:65px}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px}.section-heading .eyebrow{color:var(--muted);font-size:10px;margin-bottom:9px}.section-heading p{color:var(--muted);font-size:13px;margin-top:10px}.search{position:relative;width:260px;flex-shrink:0}.search .icon{position:absolute;left:13px;top:13px;width:17px;height:17px;color:var(--muted)}.search input{width:100%;padding:10px 13px 10px 39px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font-size:12px}.search input::placeholder{color:var(--muted)}.rates-card{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--surface)}.rates-table{width:100%;border-collapse:collapse;text-align:left}.rates-table th{padding:14px 24px;background:var(--input);font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.035em}.rates-table th:last-child{text-align:right}.rates-table td{padding:15px 24px;border-top:1px solid var(--line);font-size:13px;vertical-align:middle}.table-currency{display:flex;align-items:center;gap:12px}.table-currency .currency-symbol{width:30px;height:30px;font-size:12px}.table-currency strong{font-size:12px;font-weight:600}.table-name{color:var(--muted);font-size:12px}.table-value{font-variant-numeric:tabular-nums;white-space:nowrap}.table-action{text-align:right}.table-action button{color:var(--accent);background:transparent;font-size:11px;display:inline-flex;align-items:center;gap:7px;padding:0}.table-action .icon{width:13px;height:13px}.rates-table tbody tr:hover{background:color-mix(in srgb,var(--accent) 3%,var(--surface))}.rates-table .table-empty{padding:35px 24px;text-align:center;color:var(--muted)}.table-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:12px 24px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}.pagination{display:flex;align-items:center;gap:10px}.pagination .icon-button{width:32px;height:32px;min-height:32px;border-radius:7px}.pagination .icon{width:14px;height:14px}.rates-note{font-size:11px;color:var(--muted);margin-top:12px}.guide-section{padding:65px 0 60px}.guide-top{display:grid;grid-template-columns:1fr 1.5fr;gap:60px}.guide-intro .eyebrow{color:var(--accent);margin-bottom:14px}.guide-intro h2{font-size:32px;max-width:300px}.guide-intro p{font-size:13px;color:var(--muted);margin-top:15px;max-width:290px}.faq{border-top:1px solid var(--line)}.faq details{border-bottom:1px solid var(--line)}.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 0;font-size:14px;font-weight:500;cursor:pointer}.faq summary::-webkit-details-marker{display:none}.faq summary .icon{width:16px;height:16px;color:var(--muted)}.faq details[open] summary .icon{transform:rotate(45deg)}.faq details p{padding:0 22px 20px 0;font-size:12px;line-height:1.9;color:var(--muted)}.faq details a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}.footer{border-top:1px solid var(--line);padding:28px 0}.footer-inner{display:flex;align-items:center;gap:25px;justify-content:space-between}.footer .brand{font-size:18px;gap:8px}.footer .brand-mark{width:28px;height:28px;border-radius:8px}.footer .brand-mark .icon{width:18px;height:18px}.footer small{color:var(--muted);font-size:10px}.footer-links{display:flex;gap:24px;align-items:center;color:var(--muted);font-size:11px}.footer-links button{font-size:11px;background:none;padding:0;color:var(--muted)}.footer-links a:hover,.footer-links button:hover{color:var(--text)}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:50;max-width:calc(100% - 32px);padding:12px 20px;background:var(--text);color:var(--bg);font-size:13px;border-radius:10px;box-shadow:var(--shadow);text-align:center}.privacy-dialog{max-width:490px;width:calc(100% - 40px);padding:30px;border:1px solid var(--line);border-radius:20px;background:var(--surface);color:var(--text);box-shadow:var(--shadow)}.privacy-dialog::backdrop{background:#0009;backdrop-filter:blur(4px)}.privacy-dialog h2{font-size:24px}.privacy-dialog p{font-size:13px;color:var(--muted);margin-top:17px}.privacy-dialog a{color:var(--accent);text-decoration:underline}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:15px}.dialog-head button{flex-shrink:0}.clear-data{border:1px solid var(--line);background:transparent;border-radius:9px;padding:8px 14px;font-size:12px;margin-top:22px}.noscript{margin:20px auto;padding:20px;border:1px solid var(--line);color:var(--error)}
+    @media(min-width:1440px){.hero{padding-top:64px;padding-bottom:40px}}
+    @media(max-width:1000px){.header-inner{gap:24px}.nav{margin-left:10px;gap:20px}.workspace{grid-template-columns:minmax(0,1.65fr) minmax(260px,1fr)}.form-content{padding-inline:23px}.card-head{padding-inline:23px}.data-footer{padding-inline:23px}.currency-fields{gap:5px}.currency-field{padding-left:9px}.currency-field select{font-size:12px;padding-left:7px}.currency-symbol{width:25px;height:25px}.hero-note{padding-left:20px}.hero-note .orbit{display:none}}
+    @media(max-width:760px){.wrap{width:calc(100% - 40px)}.header-inner{height:72px;gap:18px}.nav{gap:18px;margin-left:0}.header-actions{gap:10px}.rate-status{display:none}.brand{font-size:22px}.hero{padding:36px 0 28px}.hero h1{font-size:43px}.hero p{font-size:14px;max-width:450px}.hero-note{display:none}.workspace{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr;gap:16px}.shortcuts,.insight{padding:22px}.result-amount output{font-size:42px}.currency-field select{font-size:14px;height:63px}.currency-fields{gap:12px}.benefits{gap:24px;font-size:10px}.rates-section{padding-top:48px}.section-heading{align-items:start}.section-heading h2{font-size:25px}.search{width:220px}.rates-table th,.rates-table td{padding-inline:19px}.guide-top{grid-template-columns:1fr;gap:28px}.guide-intro h2{max-width:none;font-size:29px}.guide-intro p{max-width:500px}.footer-inner{flex-wrap:wrap}.footer small{order:3;width:100%}.guide-section{padding:48px 0}.table-name{font-size:11px}}
+    @media(max-width:580px){html{scroll-padding-top:90px}.wrap{width:calc(100% - 32px)}.header-inner{height:68px}.brand-mark{width:32px;height:32px;border-radius:9px}.header-actions .icon-button{width:37px;height:37px;min-height:37px;border-radius:10px}.menu-toggle{display:inline-grid}.nav{display:none;position:absolute;top:67px;left:0;right:0;margin:0;padding:13px 24px 19px;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}.nav.is-open{display:flex;flex-direction:column;align-items:stretch;gap:0}.nav a{padding:13px 0}.nav a[aria-current]:after{display:none}.hero{padding:32px 0 26px}.hero h1{font-size:39px;max-width:350px;line-height:1.12}.hero h1 span{display:block}.hero p{font-size:13px;max-width:320px;margin-top:13px}.hero .eyebrow{font-size:9px;margin-bottom:14px}.card-head{padding:18px 19px 0}.form-content{padding:14px 19px 20px}.card-title{font-size:14px}.card-title .icon{width:17px;height:17px}.text-button{font-size:11px}.amount-box{padding:12px 14px}.amount-box input{font-size:31px}.currency-fields{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:5px;margin-top:17px}.currency-field{padding-left:8px}.currency-field .currency-symbol{display:none}.currency-field select{height:55px;font-size:12px;padding-left:4px}.swap{width:28px;height:36px;min-height:36px;margin-bottom:10px}.swap .icon{width:18px;height:18px}.primary{margin-top:18px}.result-panel{padding:18px 16px 17px}.result-amount output{font-size:35px}.result-amount>span{font-size:16px}.data-footer{padding:13px 19px;gap:10px}.data-footer p{font-size:9px;max-width:77%}.refresh{font-size:9px}.refresh .icon{width:12px;height:12px}.sidebar{grid-template-columns:1fr;gap:16px}.shortcuts{padding:20px}.shortcut-list{grid-template-columns:1fr 1fr;gap:0 15px}.shortcut{grid-template-columns:1fr auto;gap:5px;padding:12px 0}.shortcut>.currency-symbol{display:none}.shortcut:last-child{padding-bottom:12px}.shortcut .pair-name{font-size:12px}.shortcut .pair-rate{font-size:9px}.insight{padding:22px}.insight h3{max-width:none;font-size:22px;margin-top:12px}.insight p{max-width:400px}.insight .inline-link{margin-top:10px}.benefits{gap:12px;flex-wrap:wrap;font-size:9px;margin-top:20px}.benefits span{gap:4px}.benefits .icon{width:12px;height:12px}.section-heading{flex-direction:column;gap:18px}.search{width:100%}.rates-table th,.rates-table td{padding:12px 14px}.rates-table th:nth-child(2),.rates-table td:nth-child(2){display:none}.table-currency{gap:8px}.table-currency .currency-symbol{display:none}.table-currency strong{font-size:11px}.table-value{font-size:12px!important}.table-action button{font-size:10px;gap:4px}.rates-table th{font-size:9px}.table-bottom{padding:12px 14px;font-size:10px}.table-bottom>span{max-width:155px}.pagination{gap:6px}.pagination .icon-button{width:29px;min-height:32px}.rates-note{font-size:10px}.footer{padding-top:23px}.footer-links{gap:18px}.footer-inner{gap:16px}.footer small{font-size:9px}.faq summary{font-size:13px}.fee-grid .field-label{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#converter">Skip to converter</a>
+  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6.1 6a8 8 0 0 1 13.1 3M4.8 15a8 8 0 0 0 13.1 3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="Forexa home"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-swap"/></svg></span>Forexa<span style="color:var(--accent)">.</span></a>
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="#converter" aria-current="location">Converter</a><a href="#rates">Explore rates</a><a href="#guide">How it works</a>
+      </nav>
+      <div class="header-actions">
+        <span class="rate-status" id="rateStatus" data-state="loading"><span class="status-dot"></span><span id="statusText">Loading rates</span></span>
+        <button type="button" class="icon-button" id="themeBtn" aria-label="Switch to light theme"><svg class="icon sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="icon moon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+        <button type="button" class="icon-button menu-toggle" id="menuBtn" aria-label="Open navigation" aria-controls="mainNav" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+  </header>
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="pageTitle">
+      <div><div class="eyebrow">A clearer way to convert</div><h1 id="pageTitle">Money moves. <span>Stay ahead.</span></h1><p>From everyday purchases to your next big journey.<br>Know what your money is worth, wherever it takes you.</p></div>
+      <div class="hero-note" aria-label="Currency coverage"><div class="orbit" aria-hidden="true"><svg class="icon"><use href="#i-globe"/></svg></div><div><strong id="currencyCount">World</strong><span>currencies. One place.</span></div></div>
+    </section>
+    <noscript><p class="noscript">Please enable JavaScript to load exchange rates and use the converter. The guide below is still available.</p></noscript>
+    <div class="workspace">
+      <section id="converter" class="converter" aria-labelledby="converterTitle" tabindex="-1">
+        <div class="card-head"><h2 class="card-title" id="converterTitle"><svg class="icon" aria-hidden="true"><use href="#i-swap"/></svg>Currency converter</h2><button type="button" id="savePair" class="text-button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>Save pair</span></button></div>
+        <form id="converterForm" class="form-content" novalidate>
+          <label class="field-label" for="amount">Amount to convert</label>
+          <div class="amount-box"><input type="number" id="amount" name="amount" value="100" min="0" max="1000000000000" step="any" inputmode="decimal" autocomplete="off" aria-describedby="formError"><span class="amount-code" id="amountCode" aria-hidden="true">USD</span></div>
+          <div class="currency-fields">
+            <div><label class="field-label" for="fromCurrency">From</label><div class="currency-field"><span class="currency-symbol" id="fromSymbol" aria-hidden="true">$</span><select id="fromCurrency" name="from" aria-label="Source currency"></select><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></div></div>
+            <button type="button" class="swap" id="swapBtn" aria-label="Swap currencies" title="Swap currencies"><svg class="icon" aria-hidden="true"><use href="#i-swap"/></svg></button>
+            <div><label class="field-label" for="toCurrency">To</label><div class="currency-field"><span class="currency-symbol" id="toSymbol" aria-hidden="true">€</span><select id="toCurrency" name="to" aria-label="Target currency"></select><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></div></div>
+          </div>
+          <button type="submit" id="convertBtn" class="primary"><span>Convert currency</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <details class="fee-settings"><summary><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Account for a transfer fee</summary><div class="fee-grid"><div><label class="field-label" for="feePercent">Percentage fee (%)</label><input class="small-input" id="feePercent" type="number" value="0" min="0" max="100" step="any" inputmode="decimal" aria-describedby="feeHelp formError"></div><div><label class="field-label" for="feeFixed">Fixed fee (<span id="feeCode">USD</span>)</label><input class="small-input" id="feeFixed" type="number" value="0" min="0" step="any" inputmode="decimal" aria-describedby="feeHelp formError"></div></div><p class="fee-help" id="feeHelp">Your estimate only. Fees are deducted from the amount before conversion; providers may calculate them differently.</p></details>
+          <p class="form-error" id="formError" role="alert" hidden></p>
+          <div class="result-panel" id="resultPanel" aria-busy="true">
+            <div class="result-top"><span class="result-label" id="resultLabel">Estimated conversion</span><button type="button" class="copy-button" id="copyBtn" aria-label="Copy conversion result" title="Copy result" disabled><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+            <div class="result-amount"><output id="result" for="amount fromCurrency toCurrency feePercent feeFixed" aria-live="polite" aria-atomic="true">Loading…</output><span id="resultCode" aria-hidden="true">EUR</span></div>
+            <p class="rate-equation" id="rateEquation">Getting the latest daily rates</p><p class="result-foot" id="resultFoot">Indicative rates. Your provider’s quote may differ.</p>
+          </div>
+        </form>
+        <div class="data-footer"><p><span id="updatedAt">Checking rate date…</span><br><a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">Rates by ExchangeRate-API</a> · Daily updates</p><button type="button" class="text-button refresh" id="refreshBtn" aria-label="Check for updated rates"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg><span>Refresh</span></button></div>
+      </section>
+      <aside class="sidebar" aria-label="Shortcuts and conversion tips">
+        <section class="shortcuts" aria-labelledby="shortcutsTitle"><div class="section-top"><h2 id="shortcutsTitle">Your shortcuts</h2><span class="count" id="pairCount">4 pairs</span></div><p class="section-description">Less searching. More getting on with it.</p><div class="shortcut-list" id="shortcutList"></div><p class="local-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span id="localNote">Saved on this device. No account needed.</span></p></section>
+        <section class="insight"><div class="eyebrow">Good to know</div><h3>A rate is only<br>part of the picture.</h3><p>Banks and transfer services can add fees or an exchange-rate markup. Always compare the final amount you’ll receive.</p><a href="#guide" class="inline-link">Make sense of exchange rates <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></section>
+      </aside>
+    </div>
+    <div class="benefits"><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Free to use</span><span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Rates updated daily</span><span><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>No sign-up required</span></div>
+    <section id="rates" class="rates-section" aria-labelledby="ratesTitle">
+      <div class="section-heading"><div><div class="eyebrow">Across borders</div><h2 id="ratesTitle">A world of possibilities.</h2><p>Exchange rates for <strong id="tableBase">1 USD</strong>. Select a currency to convert.</p></div><div class="search"><label for="currencySearch" class="sr-only">Search currencies by name or code</label><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="currencySearch" placeholder="Search a currency…" autocomplete="off"></div></div>
+      <div class="rates-card"><table class="rates-table"><caption class="sr-only">Daily exchange rates relative to the selected source currency</caption><thead><tr><th scope="col">Currency</th><th scope="col">Name</th><th scope="col" id="rateHeading">Per 1 USD</th><th scope="col"><span class="sr-only">Action</span></th></tr></thead><tbody id="ratesBody"><tr><td colspan="4" class="table-empty">Loading currency rates…</td></tr></tbody></table><div class="table-bottom"><span id="tableSummary" role="status">Connecting to the rate provider…</span><div class="pagination"><button type="button" class="icon-button" id="prevPage" aria-label="Previous currencies" disabled><svg class="icon" aria-hidden="true"><use href="#i-left"/></svg></button><span id="pageLabel">1 / 1</span><button type="button" class="icon-button" id="nextPage" aria-label="Next currencies" disabled><svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button></div></div></div>
+      <p class="rates-note" id="ratesNote">Indicative daily rates, not a live trading feed. Bank and transfer fees are not included.</p>
+    </section>
+    <section id="guide" class="guide-section" aria-labelledby="guideTitle"><div class="guide-top"><div class="guide-intro"><div class="eyebrow">A little more clarity</div><h2 id="guideTitle">Good questions.<br>Clear answers.</h2><p>Whether you’re planning a trip, shopping abroad or sending money home, start with the essentials.</p></div><div class="faq">
+      <details open><summary>How does Forexa calculate a conversion?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Choose the currency you have, the currency you need and an amount. Forexa multiplies that amount by the exchange rate. For example, if a rate were 0.90 EUR per USD, 100 USD would convert to 90 EUR before fees. This is an illustration, not a current quote.</p></details>
+      <details><summary>How fresh are these exchange rates?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Rates are supplied by <a href="https://www.exchangerate-api.com/docs/free" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a> and updated once a day. The date below the converter is the provider’s rate timestamp, shown in UTC. Forexa reuses that daily data to load quickly. If fresh data cannot be reached, a clearly labelled saved rate may be shown for up to seven days.</p></details>
+      <details><summary>Why is my bank’s rate different?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Forexa shows an indicative reference rate. A bank or transfer service may use a different rate, include a markup and charge additional fees. Open “Account for a transfer fee” to model fees you already know, then check the provider’s final quote before making a transfer.</p></details>
+      <details><summary>Can I exchange or send money here?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Forexa is a free currency calculator, not a bank or transfer service. It helps you estimate and compare amounts. It does not hold funds or process payments.</p></details>
+      <details><summary>How do I save my favourite pairs?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Choose two currencies and select “Save pair”. Up to six pairs can be kept in Your shortcuts. Select “Saved” on the current pair to remove it. Your shortcuts and theme stay in this browser when local storage is available; they do not sync between devices.</p></details>
+    </div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#top" aria-label="Forexa home"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-swap"/></svg></span>Forexa.</a><small>© <span id="year">2026</span> Forexa. Designed by Mwansa Chiyumbe.</small><div class="footer-links"><a href="#converter">Converter</a><a href="#guide">About the rates</a><button type="button" id="privacyBtn">Privacy</button></div></div></footer>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <dialog id="privacyDialog" class="privacy-dialog" aria-labelledby="privacyTitle"><div class="dialog-head"><h2 id="privacyTitle">Your privacy, simply.</h2><button class="icon-button" id="closePrivacy" type="button" aria-label="Close privacy notice"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div><p>Your amounts and fee estimates are calculated in your browser and are not sent to the exchange-rate provider. Forexa stores your theme, saved currency pairs and a copy of daily rates on this device.</p><p>To obtain rates, your browser connects to ExchangeRate-API, which receives normal connection information such as your IP address. Read the <a href="https://www.exchangerate-api.com/terms" target="_blank" rel="noopener noreferrer">provider’s terms</a>. This version of Forexa uses no advertising or analytics cookies.</p><p>Clearing saved data resets shortcuts and theme and removes the stored rates. Rates currently in memory remain available until you leave this page.</p><button type="button" id="clearData" class="clear-data">Clear saved Forexa data</button></dialog>
+  <script>
+    (() => {
+      'use strict';
+      const $ = id => document.getElementById(id);
+      const API_URL = 'https://open.er-api.com/v6/latest/USD';
+      const CACHE_KEY = 'forexa.rates.v1';
+      const PAIRS_KEY = 'forexa.pairs.v1';
+      const DEFAULT_PAIRS = [['USD','EUR'],['GBP','USD'],['USD','ZAR'],['EUR','ZMW']];
+      const POPULAR = ['EUR','GBP','ZAR','ZMW','JPY','CAD','AUD','CHF'];
+      const INITIAL_CODES = ['USD',...POPULAR,'CNY','INR','KES','NGN','BWP'];
+      const SYMBOLS = {USD:'$',EUR:'€',GBP:'£',ZAR:'R',ZMW:'K',JPY:'¥',CAD:'C$',AUD:'A$',CHF:'Fr',CNY:'¥',INR:'₹',KES:'KSh',NGN:'₦',BWP:'P',NZD:'NZ$',AED:'د.إ'};
+      const MAX_CACHE_AGE = 7 * 86400000;
+      let storageAvailable = true;
+      const storage = {
+        read(key) { try { return JSON.parse(localStorage.getItem(key)); } catch (_) { return null; } },
+        write(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (_) { storageAvailable = false; return false; } }
+      };
+      let displayNames;
+      try { displayNames = new Intl.DisplayNames(['en'], {type:'currency'}); } catch (_) {}
+      const nameOf = code => displayNames ? displayNames.of(code) : code;
+      const symbolOf = code => SYMBOLS[code] || code.slice(0,2);
+      const numberFormat = (n, digits = 4) => new Intl.NumberFormat('en', {maximumFractionDigits:digits}).format(n);
+      const rateFormat = n => new Intl.NumberFormat('en', n < .0001 ? {maximumSignificantDigits:5} : {maximumFractionDigits:6}).format(n);
+      function moneyFormat(n, code) {
+        let minorDigits = 2;
+        try { minorDigits = new Intl.NumberFormat('en', {style:'currency',currency:code}).resolvedOptions().maximumFractionDigits; } catch (_) {}
+        return new Intl.NumberFormat('en', n > 0 && n < .0001 ? {maximumSignificantDigits:5} : {minimumFractionDigits:minorDigits, maximumFractionDigits:Math.max(4,minorDigits)}).format(n);
+      }
+      const state = {data:null,codes:INITIAL_CODES.slice().sort(),stale:false,loading:false,page:1,pageSize:8,lastAttempt:0,retryAfter:0,copyText:''};
+      function validPair(pair) { return Array.isArray(pair) && pair.length === 2 && pair.every(code => typeof code === 'string' && /^[A-Z]{3}$/.test(code)); }
+      const savedPairs = storage.read(PAIRS_KEY);
+      let pairs = Array.isArray(savedPairs) ? savedPairs.filter(validPair).filter((p,i,a) => a.findIndex(q => p.join('/') === q.join('/')) === i).slice(0,6) : DEFAULT_PAIRS.map(p => [...p]);
+      let toastTimer;
+      function notify(message) { clearTimeout(toastTimer); $('toast').textContent = message; $('toast').hidden = false; toastTimer = setTimeout(() => { $('toast').hidden = true; },4500); }
+      function icon(name) { const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.classList.add('icon'); svg.setAttribute('aria-hidden','true'); const use = document.createElementNS('http://www.w3.org/2000/svg','use'); use.setAttribute('href','#i-'+name); svg.append(use); return svg; }
+      function node(tag, className, text) { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; }
+      function populateCurrencies(from = 'USD', to = 'EUR') {
+        for (const [id,value] of [['fromCurrency',from],['toCurrency',to]]) {
+          const select = $(id); const fragment = document.createDocumentFragment();
+          state.codes.forEach(code => { const option = new Option(code+' — '+nameOf(code),code); fragment.append(option); });
+          select.replaceChildren(fragment); select.value = state.codes.includes(value) ? value : (id === 'fromCurrency' ? 'USD' : (state.codes.includes('EUR') ? 'EUR' : 'USD'));
+        }
+      }
+      function rate(from,to) { if (from === to) return 1; if (!state.data || !state.data.rates[from] || !state.data.rates[to]) return null; return state.data.rates[to] / state.data.rates[from]; }
+      function selectedPair() { return [$('fromCurrency').value,$('toCurrency').value]; }
+      function isSaved(from,to) { return pairs.some(pair => pair[0] === from && pair[1] === to); }
+      function updatePairLabels() {
+        const [from,to] = selectedPair(); $('amountCode').textContent = from; $('feeCode').textContent = from; $('resultCode').textContent = to; $('result').setAttribute('aria-label','Converted amount in '+to); $('fromSymbol').textContent = symbolOf(from); $('toSymbol').textContent = symbolOf(to);
+        const saved = isSaved(from,to); $('savePair').setAttribute('aria-pressed',String(saved)); $('savePair').querySelector('span').textContent = saved ? 'Saved' : 'Save pair'; $('savePair').setAttribute('aria-label', saved ? 'Remove '+from+' to '+to+' from shortcuts' : 'Save '+from+' to '+to+' to shortcuts');
+        $('tableBase').textContent = '1 '+from; $('rateHeading').textContent = 'Per 1 '+from;
+      }
+      function inputError(message, input) {
+        $('formError').textContent = message; $('formError').hidden = false; if (input) input.setAttribute('aria-invalid','true');
+        $('result').textContent = '—'; $('rateEquation').textContent = 'Check your amount and fee settings'; $('resultFoot').textContent = 'A valid amount is needed to calculate a result.'; $('copyBtn').disabled = true; state.copyText = '';
+      }
+      function renderConversion() {
+        updatePairLabels(); $('formError').hidden = true; ['amount','feePercent','feeFixed'].forEach(id => $(id).removeAttribute('aria-invalid'));
+        const amount = $('amount').valueAsNumber, percentage = $('feePercent').valueAsNumber, fixed = $('feeFixed').valueAsNumber;
+        if (!Number.isFinite(amount) || amount < 0 || amount > 1e12) { inputError('Enter an amount from 0 to 1,000,000,000,000.',$('amount')); return; }
+        if (!Number.isFinite(percentage) || percentage < 0 || percentage > 100) { inputError('Enter a percentage fee between 0 and 100.',$('feePercent')); return; }
+        if (!Number.isFinite(fixed) || fixed < 0) { inputError('Enter a fixed fee of 0 or more.',$('feeFixed')); return; }
+        const fee = amount * percentage / 100 + fixed;
+        if (fee > amount) { inputError('Your total estimated fees cannot exceed the amount.',$('feeFixed')); return; }
+        const [from,to] = selectedPair(); const conversionRate = rate(from,to);
+        if (conversionRate === null) {
+          $('result').textContent = state.loading ? 'Loading…' : 'Unavailable'; $('rateEquation').textContent = state.loading ? 'Getting the latest daily rates' : 'Rates could not be loaded. Please try Refresh.'; $('resultFoot').textContent = state.loading ? 'Daily reference rates. Provider fees may apply.' : 'Check your connection and try again.'; $('copyBtn').disabled = true; state.copyText = ''; return;
+        }
+        const converted = (amount-fee) * conversionRate;
+        if (!Number.isFinite(converted)) { inputError('This conversion is too large to display. Please use a smaller amount.',$('amount')); return; }
+        const displayAmount = moneyFormat(converted,to);
+        $('result').textContent = displayAmount; $('resultLabel').textContent = fee > 0 ? 'After your estimated fees' : 'Estimated conversion';
+        $('rateEquation').textContent = '1 '+from+' = '+rateFormat(conversionRate)+' '+to;
+        $('resultFoot').textContent = (from === to ? 'Same currency; no exchange-rate lookup needed.' : state.stale ? 'Saved rate — may be out of date. ' : 'Indicative rate. ') + (fee > 0 ? numberFormat(fee)+' '+from+' estimated fees deducted.' : from === to ? '' : 'Provider fees and markups are not included.');
+        state.copyText = numberFormat(amount,8)+' '+from+' = '+displayAmount+' '+to+(fee > 0 ? ' after '+numberFormat(fee)+' '+from+' estimated fees' : ' before provider fees')+(state.stale && from !== to ? ' (saved rate; may be out of date)' : '');
+        $('copyBtn').disabled = false;
+      }
+      function renderShortcuts() {
+        const container = $('shortcutList'); container.replaceChildren(); $('pairCount').textContent = pairs.length+' '+(pairs.length === 1 ? 'pair' : 'pairs');
+        if (!pairs.length) { container.append(node('p','empty-shortcuts','Save a currency pair to keep it close at hand.')); return; }
+        const current = selectedPair();
+        pairs.forEach(([from,to]) => {
+          const button = node('button','shortcut'); button.type = 'button'; button.setAttribute('aria-label','Convert '+from+' to '+to); button.setAttribute('aria-pressed',String(current[0] === from && current[1] === to));
+          const badge = node('span','currency-symbol',symbolOf(from)); badge.setAttribute('aria-hidden','true');
+          const content = node('span'); const name = node('span','pair-name'); name.append(document.createTextNode(from),node('b','', '→'),document.createTextNode(to));
+          const pairRate = rate(from,to); content.append(name,node('span','pair-rate',pairRate === null ? 'Rate unavailable' : '1 '+from+' = '+rateFormat(pairRate)+' '+to+(state.stale ? ' · saved' : '')));
+          button.append(badge,content,icon('arrow'));
+          button.addEventListener('click',() => choosePair(from,to)); container.append(button);
+        });
+      }
+      function renderTable() {
+        const body = $('ratesBody'); body.replaceChildren(); const [from] = selectedPair(); const search = $('currencySearch').value.trim().toLowerCase();
+        let codes = state.data ? state.codes.filter(code => code !== from && (code.toLowerCase().includes(search) || nameOf(code).toLowerCase().includes(search))) : [];
+        if (!search) codes.sort((a,b) => { const ai = POPULAR.indexOf(a), bi = POPULAR.indexOf(b); return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi) || a.localeCompare(b); });
+        const pages = Math.max(1,Math.ceil(codes.length/state.pageSize)); state.page = Math.min(state.page,pages); const start = (state.page-1)*state.pageSize;
+        if (!codes.length) { const row = node('tr'); const cell = node('td','table-empty',state.loading && !state.data ? 'Loading currency rates…' : !state.data ? 'Rates are unavailable. Use Refresh above to try again.' : 'No currencies match “'+$('currencySearch').value.trim()+'”. Try a name or a three-letter code.'); cell.colSpan = 4; row.append(cell); body.append(row); }
+        codes.slice(start,start+state.pageSize).forEach(code => {
+          const row = node('tr'); const currencyCell = node('td'); const currency = node('div','table-currency'); const badge = node('span','currency-symbol',symbolOf(code)); badge.setAttribute('aria-hidden','true'); currency.append(badge,node('strong','',code)); currencyCell.append(currency);
+          const valueCell = node('td','table-value',rateFormat(rate(from,code))); const actionCell = node('td','table-action'); const button = node('button','', 'Convert'); button.type = 'button'; button.setAttribute('aria-label','Convert '+from+' to '+code+' from rate table'); button.append(icon('arrow')); button.addEventListener('click',() => { choosePair(from,code); $('converter').focus({preventScroll:true}); $('converter').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'}); }); actionCell.append(button);
+          row.append(currencyCell,node('td','table-name',nameOf(code)),valueCell,actionCell); body.append(row);
+        });
+        $('tableSummary').textContent = codes.length ? (start+1)+'–'+Math.min(start+state.pageSize,codes.length)+' of '+codes.length+' currencies' : state.loading ? 'Connecting to the rate provider…' : 'No currencies to show';
+        $('pageLabel').textContent = state.page+' / '+pages; $('prevPage').disabled = state.page <= 1; $('nextPage').disabled = state.page >= pages;
+        $('ratesNote').textContent = (state.stale ? 'Showing saved rates; they may be out of date. ' : 'Indicative daily rates, not a live trading feed. ')+'Bank and transfer fees are not included.';
+      }
+      function choosePair(from,to) {
+        if (!state.codes.includes(from) || !state.codes.includes(to)) { notify('This pair is not currently available from the rate provider.'); return; }
+        $('fromCurrency').value = from; $('toCurrency').value = to; state.page = 1; renderConversion(); renderShortcuts(); renderTable();
+      }
+      function validateData(data) {
+        if (!data || data.result !== 'success' || data.base_code !== 'USD' || !data.rates || typeof data.rates !== 'object' || data.rates.USD !== 1) return null;
+        const updated = Number(data.time_last_update_unix)*1000, next = Number(data.time_next_update_unix)*1000;
+        if (!Number.isFinite(updated) || !Number.isFinite(next) || next <= updated || updated > Date.now()+300000 || Date.now()-updated > MAX_CACHE_AGE) return null;
+        const entries = Object.entries(data.rates).filter(([code,value]) => /^[A-Z]{3}$/.test(code) && typeof value === 'number' && Number.isFinite(value) && value > 0 && value < 1e12);
+        if (entries.length < 2) return null;
+        return {result:'success',base_code:'USD',rates:Object.fromEntries(entries),time_last_update_unix:updated/1000,time_next_update_unix:next/1000};
+      }
+      function useData(data, stale) {
+        state.data = data; state.stale = stale; const [from,to] = selectedPair(); state.codes = Object.keys(data.rates).sort(); populateCurrencies(from,to);
+        $('currencyCount').textContent = state.codes.length;
+        const date = new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'UTC'}).format(new Date(data.time_last_update_unix*1000));
+        $('updatedAt').textContent = (stale ? 'Saved rates: ' : 'Rates updated: ')+date+' UTC';
+        $('rateStatus').dataset.state = stale ? 'stale' : 'ready'; $('statusText').textContent = stale ? 'Saved rates' : 'Daily rates';
+      }
+      let pending;
+      async function loadRates(force = false) {
+        if (pending) return pending;
+        if (force && Date.now() < state.retryAfter) { notify('The provider is limiting requests. Please try again in about '+Math.ceil((state.retryAfter-Date.now())/60000)+' minutes.'); return; }
+        if (force && Date.now()-state.lastAttempt < 60000) { notify('Please wait a minute before checking rates again.'); return; }
+        const cached = validateData(storage.read(CACHE_KEY));
+        if (!force && cached && Date.now() < cached.time_next_update_unix*1000) { useData(cached,false); renderAll(); return; }
+        if (!state.data && cached) useData(cached,Date.now() >= cached.time_next_update_unix*1000);
+        state.loading = true; state.lastAttempt = Date.now(); $('refreshBtn').disabled = true; $('refreshBtn').querySelector('svg').classList.add('spin'); $('resultPanel').setAttribute('aria-busy','true'); renderAll();
+        pending = (async () => {
+          const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(),12000);
+          try {
+            const response = await fetch(API_URL,{signal:controller.signal,cache:'no-store',referrerPolicy:'no-referrer'});
+            if (response.status === 429) state.retryAfter = Date.now()+20*60000;
+            if (!response.ok) throw new Error('Rate provider unavailable');
+            const data = validateData(await response.json()); if (!data) throw new Error('Invalid or expired rate data');
+            useData(data,Date.now() >= data.time_next_update_unix*1000); storage.write(CACHE_KEY,data);
+            if (force) notify(state.stale ? 'The provider returned an older rate. Check the displayed date.' : 'Rates checked. The provider updates once a day.');
+          } catch (_) {
+            const fallback = validateData(state.data) || cached;
+            if (fallback) { useData(fallback,true); notify('Could not refresh. Showing saved rates with their original date.'); }
+            else { state.data = null; state.stale = false; $('rateStatus').dataset.state = 'stale'; $('statusText').textContent = 'Rates unavailable'; $('updatedAt').textContent = 'No rate data available'; $('currencyCount').textContent = 'World'; }
+          } finally {
+            clearTimeout(timeout); state.loading = false; pending = null; $('refreshBtn').disabled = false; $('refreshBtn').querySelector('svg').classList.remove('spin'); $('resultPanel').setAttribute('aria-busy','false'); renderAll();
+          }
+        })();
+        return pending;
+      }
+      function renderAll() { renderConversion(); renderShortcuts(); renderTable(); $('resultPanel').setAttribute('aria-busy',String(state.loading)); if (!storageAvailable) $('localNote').textContent = 'Available for this visit. Browser storage is unavailable.'; }
+      $('converterForm').addEventListener('submit',event => { event.preventDefault(); renderConversion(); if (!state.data && !state.loading && selectedPair()[0] !== selectedPair()[1]) loadRates(true); else if (!$('formError').hidden) document.querySelector('[aria-invalid="true"]')?.focus(); });
+      ['amount','feePercent','feeFixed'].forEach(id => $(id).addEventListener('input',renderConversion));
+      ['fromCurrency','toCurrency'].forEach(id => $(id).addEventListener('change',() => { state.page = 1; renderAll(); }));
+      $('swapBtn').addEventListener('click',() => { const [from,to] = selectedPair(); choosePair(to,from); });
+      $('savePair').addEventListener('click',() => {
+        const [from,to] = selectedPair(); const exists = isSaved(from,to);
+        if (exists) pairs = pairs.filter(pair => !(pair[0] === from && pair[1] === to));
+        else { if (pairs.length >= 6) { notify('You can save six pairs. Remove a saved pair to make room.'); return; } pairs.push([from,to]); }
+        const persisted = storage.write(PAIRS_KEY,pairs); updatePairLabels(); renderShortcuts(); $('localNote').textContent = persisted ? 'Saved on this device. No account needed.' : 'Available for this visit. Browser storage is unavailable.'; notify((exists ? 'Pair removed from shortcuts.' : 'Pair added to shortcuts.')+(persisted ? '' : ' Changes last for this visit only.'));
+      });
+      $('copyBtn').addEventListener('click',async () => { if (!state.copyText) return; try { await navigator.clipboard.writeText(state.copyText); notify('Conversion copied.'); } catch (_) { notify('Copy is unavailable here. Select the result to copy it manually.'); } });
+      $('refreshBtn').addEventListener('click',() => loadRates(true));
+      $('currencySearch').addEventListener('input',() => { state.page = 1; renderTable(); });
+      $('prevPage').addEventListener('click',() => { state.page--; renderTable(); });
+      $('nextPage').addEventListener('click',() => { state.page++; renderTable(); });
+      function updateThemeButton() { $('themeBtn').setAttribute('aria-label',document.documentElement.dataset.theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); document.querySelector('meta[name="theme-color"]').content = document.documentElement.dataset.theme === 'dark' ? '#101118' : '#f6f5f9'; }
+      $('themeBtn').addEventListener('click',() => { const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = theme; try { localStorage.setItem('forexa.theme',theme); } catch (_) {} updateThemeButton(); });
+      function closeMenu() { $('mainNav').classList.remove('is-open'); $('menuBtn').setAttribute('aria-expanded','false'); $('menuBtn').setAttribute('aria-label','Open navigation'); }
+      $('menuBtn').addEventListener('click',() => { const open = $('menuBtn').getAttribute('aria-expanded') !== 'true'; $('mainNav').classList.toggle('is-open',open); $('menuBtn').setAttribute('aria-expanded',String(open)); $('menuBtn').setAttribute('aria-label',open ? 'Close navigation' : 'Open navigation'); });
+      document.querySelectorAll('.nav a').forEach(link => link.addEventListener('click',() => { document.querySelectorAll('.nav a').forEach(a => a.removeAttribute('aria-current')); link.setAttribute('aria-current','location'); closeMenu(); }));
+      document.addEventListener('keydown',event => { if (event.key === 'Escape' && $('menuBtn').getAttribute('aria-expanded') === 'true') { closeMenu(); $('menuBtn').focus(); } });
+      document.addEventListener('click',event => { if (!event.target.closest('.site-header')) closeMenu(); });
+      const mobile = matchMedia('(max-width:580px)'); mobile.addEventListener('change',closeMenu);
+      const observedSections = ['converter','rates','guide'].map($); let scrollQueued = false;
+      addEventListener('scroll',() => { if (scrollQueued) return; scrollQueued = true; requestAnimationFrame(() => { let active = observedSections[0]; observedSections.forEach(section => { if (section.getBoundingClientRect().top < 180) active = section; }); document.querySelectorAll('.nav a').forEach(link => { if (link.getAttribute('href') === '#'+active.id) link.setAttribute('aria-current','location'); else link.removeAttribute('aria-current'); }); scrollQueued = false; }); },{passive:true});
+      $('privacyBtn').addEventListener('click',() => $('privacyDialog').showModal()); $('closePrivacy').addEventListener('click',() => $('privacyDialog').close());
+      $('privacyDialog').addEventListener('click',event => { if (event.target === $('privacyDialog')) { const bounds = $('privacyDialog').getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) $('privacyDialog').close(); } });
+      $('clearData').addEventListener('click',() => { let cleared = true; try { [CACHE_KEY,PAIRS_KEY,'forexa.theme'].forEach(key => localStorage.removeItem(key)); } catch (_) { cleared = false; } pairs = DEFAULT_PAIRS.map(pair => [...pair]); document.documentElement.dataset.theme = 'dark'; updateThemeButton(); renderAll(); notify(cleared ? 'Saved Forexa data cleared. Defaults restored.' : 'Defaults restored for this visit. Browser storage could not be cleared.'); });
+      // Never show a cached rate as current after the provider's next update time.
+      function checkRateAge() {
+        if (!state.data) return;
+        if (Date.now()-state.data.time_last_update_unix*1000 > MAX_CACHE_AGE) { state.data = null; $('updatedAt').textContent = 'Saved rates have expired'; $('rateStatus').dataset.state = 'stale'; $('statusText').textContent = 'Rates unavailable'; renderAll(); }
+        else if (!state.stale && Date.now() >= state.data.time_next_update_unix*1000) { useData(state.data,true); renderAll(); }
+      }
+      setInterval(checkRateAge,60000); document.addEventListener('visibilitychange',() => { if (!document.hidden) checkRateAge(); });
+      $('year').textContent = new Date().getFullYear(); populateCurrencies(); updateThemeButton(); renderAll(); loadRates();
+    })();
+  </script>
+</body>
+</html>
